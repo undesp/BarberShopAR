@@ -1,0 +1,13 @@
+tux
+Clients.all
+
+Создаем файл RakeFile = '
+require "./app"
+require "sinatra/activerecord/rake"
+'
+rake -T
+
+rake db:create_migration NAME=create_clients
+
+переходим в /db/migrate/2018.._create_clients
+в def change пишем
