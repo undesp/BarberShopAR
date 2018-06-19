@@ -1,3 +1,7 @@
+﻿@@URLS
+http://rusrails.ru/active-record-query-interface
+
+
 createdb.exe -O user -U user barbershopar
 psql -h 127.0.0.1 -U user barbershopar
 
