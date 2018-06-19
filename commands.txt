@@ -27,3 +27,10 @@ def change
 
   		t.timestamps
   	end
+в TUX создание записей двумя способоми create & new .. save
+1) Intity_name.create :col_name => 'text'
+2)param = Intity_name.new :col_name => 'text'
+  param.save
+
+  param.new_record? возвращает тру, если запись создалась, но не записалась в базу
+
