@@ -14,8 +14,14 @@ class Client < ActiveRecord::Base
 	validates :phone, presence: {message: 'Поле Номер телефона не должно быть пустым' }
 	validates :datestamp, presence: {message: 'Поле Дата не должно быть пустым' }
 end
+
 class Barber < ActiveRecord::Base
 end
+
+class Feedback < ActiveRecord::Base
+	validates :message, presence: {message: 'Введите Ваш сообщение' }
+end
+
 
 # ------------------------------------------------------------------------
 
