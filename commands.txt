@@ -1,3 +1,5 @@
+psql -h 127.0.0.1 -U user barbershopar
+
 tux
 Clients.all
 
@@ -7,7 +9,21 @@ require "sinatra/activerecord/rake"
 '
 rake -T
 
+в App.rb пишем 
+class Client < ActiveRecord::Base
+end
+
 rake db:create_migration NAME=create_clients
 
 переходим в /db/migrate/2018.._create_clients
 в def change пишем
+def change
+  	create_table :client do |t|
+  		t.string :name
+  		t.string :phone
+  		t.timestamp :datestamp
+  		t.string :barber
+  		t.string :color
+
+  		t.timestamps
+  	end

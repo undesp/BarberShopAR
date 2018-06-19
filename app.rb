@@ -9,7 +9,8 @@ set :database, {adapter: 'postgresql',  encoding: 'unicode', database: 'barbersh
 
 # Сущность клиент
 class Client < ActiveRecord::Base
-	
+end
+class Barber < ActiveRecord::Base
 end
 
 
