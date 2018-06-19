@@ -13,8 +13,21 @@ end
 class Barber < ActiveRecord::Base
 end
 
+# ------------------------------------------------------------------------
+
+helpers do
+  def username
+
+     session[:identity] ? session[:identity] : 'Гость'
+  end
+end
 
 get '/' do
 	@barbers = Barber.order "name"
 	erb :index
+end
+
+get '/visit' do
+	@specs = Barber.order "name"
+erb :visit
 end
