@@ -22,7 +22,7 @@
       };
       
     //$('select[name="colorpicker"]').simplecolorpicker();      
-     $('select[name="colorpicker"]').simplecolorpicker();
+     $('#colorpicker').simplecolorpicker();
      $('#inputDateTime2').datetimepicker({
       onChangeDateTime:logic,
       onShow:logic,
@@ -43,32 +43,36 @@
 
 <form action='/visit' method='post' class="form-horizontal" role="form">
 
-      
+      <!-- t.string :name
+      t.string :phone
+      t.timestamp :datestamp
+      t.string :barber
+      t.string :color -->
   <div class="form-group">
     <label for="inputName" class="col-sm-2 control-label">Ваше имя</label>
     <div class="col-sm-10">
-      <input type="Text" class="form-control" autofocus name='inputName' id="inputName" placeholder="Введите ваше имя" value=<%= @Name %> >
+      <input type="Text" class="form-control" autofocus name='client[name]' id="inputName" placeholder="Введите ваше имя" value="" >
     </div>
   </div> 
 
   <div class="form-group">
     <label for="inputPhone" class="col-sm-2 control-label">Номер телефона</label>
     <div class="col-sm-10">
-      <input type="Text" class="form-control" name='inputPhone' id="inputPhone" placeholder="Введите ваш номер телефона" value=<%= @Phone %> >
+      <input type="Text" class="form-control" name='client[phone]' id="inputPhone" placeholder="Введите ваш номер телефона" value="" >
     </div>
   </div>
   
   <div class="form-group">
     <label for="inputDateTime" class="col-sm-3 control-label">Когда Вас ждать?</label>
     <div class="col-sm-10">
-      <input type="Text" class="form-control" name='inputDateTime' id="inputDateTime2" autocomplete="on" placeholder="Введите дату и время" value=<%= @DateTime %>  >
+      <input type="Text" class="form-control" name='client[datestamp]' id="inputDateTime2" autocomplete="on" placeholder="Введите дату и время" value=""  >
     </div>
   </div>
 
   <div class="form-group">
     <label for="inputSpecialist" class="col-sm-4 control-label">Выберите парикмахера:</label>
     <div class="col-sm-10">
-      <select class="form-control" name='inputSpecialist' id="inputSpecialist"  >
+      <select class="form-control" name='client[barber]' id="inputSpecialist"  >
       	  <% @specs.each do |sp| %>
           <option<%= @Specialist == sp['name'] ? ' selected' : '' %>><%= sp['name'] %></option>
           <% end %>
@@ -78,7 +82,7 @@
 
  <div class="form-group">
     <label for="colorpicker" class="col-sm-5 control-label">В какой цвет вас окрасить?</label>
-    <select name="colorpicker" id='colorpicker'>
+    <select name="client[color]" id='colorpicker'>
       <option value="#7bd148">Green</option>
       <option value="#5484ed">Bold blue</option>
       <option value="#a4bdfc">Blue</option>
