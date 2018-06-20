@@ -37,6 +37,7 @@ get '/' do
 end
 
 get '/visit' do
+
 	@specs = Barber.order "name"
 	erb :visit
 end
@@ -44,17 +45,17 @@ end
 post '/visit' do
 	@specs = Barber.order "name"
 	# Сохраняем результаты запроса в переменные
-	@Name = params[:inputName]
-	@Phone = params[:inputPhone]
-	@DateTime = params[:inputDateTime]
-	@Specialist = params[:inputSpecialist]
-	@Colorpicker = params[:colorpicker]
+	# @Name = params[:inputName]
+	# @Phone = params[:inputPhone]
+	# @DateTime = params[:inputDateTime]
+	# @Specialist = params[:inputSpecialist]
+	# @Colorpicker = params[:colorpicker]
 	# c = Client.new :name => @Name, :phone => @Phone, :datestamp => @DateTime, :barber => @Specialist, :color => @Colorpicker
-	c = Client.new params[:client]
-	c.save
-	
-	if c.new_record? 
-		@error = c.errors.messages
+	@c = Client.new params[:client]
+	@c.save
+	@params = params
+	if @c.new_record? 
+		@error = @c.errors.messages
 		erb  :visit 
 	else 
 		erb	 "Вы записаны к #{@Specialist} на #{@DateTime} "
@@ -68,10 +69,10 @@ end
 
 post '/contacts' do
 	@feedback = params[:feedback]
-	c = Feedback.new :message => @feedback
-	c.save
-	if c.new_record? 
-		@error = c.errors.messages
+	@c = Feedback.new :message => @feedback
+	@c.save
+	if @c.new_record? 
+		@error = @c.errors.messages
 		erb  :contacts 
 	else 
 		erb "Спасибо за Ваш отзыв!"

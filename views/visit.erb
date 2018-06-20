@@ -51,21 +51,21 @@
   <div class="form-group">
     <label for="inputName" class="col-sm-2 control-label">Ваше имя</label>
     <div class="col-sm-10">
-      <input type="Text" class="form-control" autofocus name='client[name]' id="inputName" placeholder="Введите ваше имя" value="" >
+      <input type="Text" class="form-control" autofocus name='client[name]' id="inputName" placeholder="Введите ваше имя" value="<%= params[:client] ? params[:client][:name] : ''%>" >
     </div>
   </div> 
 
   <div class="form-group">
     <label for="inputPhone" class="col-sm-2 control-label">Номер телефона</label>
     <div class="col-sm-10">
-      <input type="Text" class="form-control" name='client[phone]' id="inputPhone" placeholder="Введите ваш номер телефона" value="" >
+      <input type="Text" class="form-control" name='client[phone]' id="inputPhone" placeholder="Введите ваш номер телефона" value="<%= params[:client] ? params[:client][:phone] : ''%>" >
     </div>
   </div>
   
   <div class="form-group">
     <label for="inputDateTime" class="col-sm-3 control-label">Когда Вас ждать?</label>
     <div class="col-sm-10">
-      <input type="Text" class="form-control" name='client[datestamp]' id="inputDateTime2" autocomplete="on" placeholder="Введите дату и время" value=""  >
+      <input type="Text" class="form-control" name='client[datestamp]' id="inputDateTime2" autocomplete="on" placeholder="Введите дату и время" value="<%= params[:client] ? params[:client][:datestamp] : ''%>"  >
     </div>
   </div>
 
@@ -74,7 +74,7 @@
     <div class="col-sm-10">
       <select class="form-control" name='client[barber]' id="inputSpecialist"  >
       	  <% @specs.each do |sp| %>
-          <option<%= @Specialist == sp['name'] ? ' selected' : '' %>><%= sp['name'] %></option>
+          <option<%=  @c.nil? ? "" : @c.barber == sp['name'] ? ' selected' : '' %>><%= sp['name'] %></option>
           <% end %>
       </select>
     </div>
